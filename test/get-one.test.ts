@@ -7,8 +7,8 @@ const db = new AWS.DynamoDB();
 
 describe('run all', () => {
   test('get ddb entry', async () => {
-    const result = await handler({ pathParameters: { id: '2' } });
     AWS.getItemResponse.mockReturnValueOnce({ Item: { title: 'A' } });
+    const result = await handler({ pathParameters: { id: '2' } });
     expect(db.getItem).toHaveBeenCalled();
     expect(result).toEqual({ statusCode: 200, body: JSON.stringify({ title: 'A' }) });
   });
