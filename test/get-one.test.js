@@ -1,7 +1,5 @@
-import * as AWS from '../__mocks__/aws-sdk';
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-// const handler = require('../src/create-one');
-import { handler } from '../src/get-one';
+const AWS = require('../__mocks__/aws-sdk');
+const handler = require('../src/get-one').handler;
 
 const db = new AWS.DynamoDB();
 

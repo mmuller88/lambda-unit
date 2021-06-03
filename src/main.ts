@@ -23,11 +23,11 @@ export class MyStack extends cdk.Stack {
     });
 
     const createOne = new lambdajs.NodejsFunction(this, 'createOne', {
-      entry: `${path.join(__dirname)}/create-one.ts`,
+      entry: `${path.join(__dirname)}/create-one.js`,
     });
 
     const getOne = new lambdajs.NodejsFunction(this, 'getOne', {
-      entry: `${path.join(__dirname)}/get-one.ts`,
+      entry: `${path.join(__dirname)}/get-one.js`,
     });
 
     dynamoTable.grantReadWriteData(getOne);

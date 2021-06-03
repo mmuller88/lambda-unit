@@ -1,9 +1,9 @@
-import * as AWS from 'aws-sdk';
+const AWS = require('aws-sdk');
 const db = new AWS.DynamoDB();
 const TABLE_NAME = process.env.TABLE_NAME || '';
 const PRIMARY_KEY = process.env.PRIMARY_KEY || '';
 
-export const handler = async (event: any = {}): Promise<any> => {
+exports.handler = async (event) => {
 
   const requestedItemId = event.pathParameters.id;
   if (!requestedItemId) {
