@@ -73,7 +73,7 @@ export class PipeStack extends cdk.Stack {
         reports: {
           testReportGroup: {
             'files': ['**/*'],
-            'base-directory': 'target/tests/reports',
+            'base-directory': 'test-reports',
             'discard-paths': 'no',
           },
         },
