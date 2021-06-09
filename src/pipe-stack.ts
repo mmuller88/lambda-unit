@@ -3,6 +3,7 @@ import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import { GitHubSourceAction } from '@aws-cdk/aws-codepipeline-actions';
 import * as cdk from '@aws-cdk/core';
 import * as pipelines from '@aws-cdk/pipelines';
+import { CdkpipelinesDemoStage } from './CdkpipelinesDemoStage';
 // import { CdkpipelinesDemoStage } from './CdkpipelinesDemoStage';
 
 
@@ -87,12 +88,12 @@ export class PipeStack extends cdk.Stack {
 
     // console.log(cfnBuildProject);
 
-    // pipeline.addApplicationStage(new CdkpipelinesDemoStage(this, 'devStage', {
-    //   env: {
-    //     account: '981237193288',
-    //     region: 'eu-central-1',
-    //   },
-    // }));
+    pipeline.addApplicationStage(new CdkpipelinesDemoStage(this, 'devStage', {
+      env: {
+        account: '981237193288',
+        region: 'eu-central-1',
+      },
+    }));
 
   }
 }
