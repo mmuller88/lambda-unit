@@ -90,6 +90,16 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-codepipeline-actions",
+      "version": "1.107.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-codepipeline",
+      "version": "1.107.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-dynamodb",
       "version": "1.107.0",
       "type": "runtime"
@@ -106,6 +116,11 @@
     },
     {
       "name": "@aws-cdk/core",
+      "version": "1.107.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/pipelines",
       "version": "1.107.0",
       "type": "runtime"
     },

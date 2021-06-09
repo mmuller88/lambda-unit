@@ -1,11 +1,6 @@
 const { AwsCdkTypeScriptApp } = require('projen');
 
-const deps = [
-  '@types/aws-lambda',
-  'aws-lambda',
-  'aws-sdk',
-  'esbuild@^0',
-];
+const deps = ['@types/aws-lambda', 'aws-lambda', 'aws-sdk', 'esbuild@^0'];
 
 const project = new AwsCdkTypeScriptApp({
   authorAddress: 'damadden88@googlemail.com',
@@ -18,6 +13,9 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-apigateway',
     '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-lambda-nodejs',
+    '@aws-cdk/pipelines',
+    '@aws-cdk/aws-codepipeline',
+    '@aws-cdk/aws-codepipeline-actions',
   ],
   deps,
   cdkVersionPinning: true,

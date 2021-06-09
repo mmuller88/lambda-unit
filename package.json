@@ -4,7 +4,7 @@
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
     "test:compile": "npx projen test:compile",
-    "test": "jest --passWithNoTests --all --updateSnapshot",
+    "test": "npx projen test",
     "build": "npx projen build",
     "test:watch": "npx projen test:watch",
     "test:update": "npx projen test:update",
@@ -47,10 +47,13 @@
   "dependencies": {
     "@aws-cdk/assert": "1.107.0",
     "@aws-cdk/aws-apigateway": "1.107.0",
+    "@aws-cdk/aws-codepipeline": "1.107.0",
+    "@aws-cdk/aws-codepipeline-actions": "1.107.0",
     "@aws-cdk/aws-dynamodb": "1.107.0",
     "@aws-cdk/aws-lambda": "1.107.0",
     "@aws-cdk/aws-lambda-nodejs": "1.107.0",
     "@aws-cdk/core": "1.107.0",
+    "@aws-cdk/pipelines": "1.107.0",
     "@types/aws-lambda": "^8.10.76",
     "aws-lambda": "^1.0.6",
     "aws-sdk": "^2.920.0",
@@ -62,8 +65,7 @@
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",
-      "**/?(*.)+(spec|test).ts?(x)",
-      "**/?(*.)+(spec|test).js?(x)"
+      "**/?(*.)+(spec|test).ts?(x)"
     ],
     "clearMocks": true,
     "collectCoverage": true,
