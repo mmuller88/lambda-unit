@@ -90,6 +90,11 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-codebuild",
+      "version": "1.107.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-codepipeline-actions",
       "version": "1.107.0",
       "type": "runtime"
