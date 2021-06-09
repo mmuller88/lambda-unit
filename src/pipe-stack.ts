@@ -55,7 +55,7 @@ export class PipeStack extends cdk.Stack {
     //   console.log(child.node.id);
     // });
 
-    new codebuild.ReportGroup(this, 'reportGroup', { reportGroupName: 'testReportGroup' });
+    new codebuild.ReportGroup(this, 'reportGroup', { reportGroupName: 'testReportGroup', removalPolicy: cdk.RemovalPolicy.DESTROY });
 
     const cfnBuildProject = pipeline.node.findAll().filter(child => child.node.id === 'CdkBuildProject')[0].node.defaultChild as codebuild.CfnProject;
     cfnBuildProject.source = {
@@ -64,7 +64,7 @@ export class PipeStack extends cdk.Stack {
         version: '0.2',
         phases: {
           pre_build: {
-            commands: ['yarn install--frozen - lockfile'],
+            commands: ['yarn install --frozen-lockfile'],
           },
           build: {
             commands: ['yarn build', 'yarn test', 'npx cdk synth'],
