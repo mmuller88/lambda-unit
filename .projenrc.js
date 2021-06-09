@@ -28,6 +28,8 @@ const project = new AwsCdkTypeScriptApp({
   cdkVersionPinning: true,
 });
 
+project.jest.addTestMatch('**/?(*.)+(spec|test).js?(x)');
+
 project.setScript('cdkDeploy', 'cdk deploy');
 project.setScript('cdkDestroy', 'cdk destroy');
 
