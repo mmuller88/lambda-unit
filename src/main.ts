@@ -11,7 +11,7 @@ const devEnv = {
 };
 
 new PipeStack(app, 'pipe-stack', { env: devEnv });
-new ApiStack(app, 'api-stack-dev', { env: devEnv });
+new ApiStack(app, 'api-stack-2-dev', { env: devEnv });
 // new MyStack(app, 'my-stack-prod', { env: prodEnv });
 
 app.synth();
