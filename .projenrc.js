@@ -1,4 +1,4 @@
-const { AwsCdkTypeScriptApp } = require('projen');
+const { AwsCdkTypeScriptApp, NodePackageManager } = require('projen');
 
 const deps = ['@types/aws-lambda', 'aws-lambda', 'aws-sdk', 'esbuild@^0'];
 
@@ -8,6 +8,7 @@ const project = new AwsCdkTypeScriptApp({
   cdkVersion: '1.110.0',
   defaultReleaseBranch: 'main',
   name: 'lambda-unit',
+  packageManager: NodePackageManager.NPM,
   cdkDependencies: [
     '@aws-cdk/aws-dynamodb',
     '@aws-cdk/aws-apigateway',
