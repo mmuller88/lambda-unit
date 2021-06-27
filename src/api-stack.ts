@@ -10,7 +10,7 @@ export class ApiStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props: cdk.StackProps = {}) {
     super(scope, id, props);
 
-    const dynamoTable = new ddb.Table(this, 'items', {
+    const dynamoTable = new ddb.Table(this, 'itemss', {
       partitionKey: {
         name: 'itemId',
         type: ddb.AttributeType.STRING,
