@@ -4,7 +4,7 @@ import * as codepipeline from '@aws-cdk/aws-codepipeline';
 // import * as pipelines from '@aws-cdk/pipelines';
 // import { CdkpipelinesDemoStage } from './CdkpipelinesDemoStage';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
-// import * as iam from '@aws-cdk/aws-iam';
+import * as iam from '@aws-cdk/aws-iam';
 import * as s3 from '@aws-cdk/aws-s3';
 import * as cdk from '@aws-cdk/core';
 // import { CdkpipelinesDemoStage } from './CdkpipelinesDemoStage';
@@ -94,16 +94,23 @@ export class PipeStack extends cdk.Stack {
       ],
     });
 
+    const createAction = new codepipeline_actions.CloudFormationCreateUpdateStackAction({
+      actionName: 'deployDev',
+      stackName: 'api-stack-dev',
+      templatePath: cdkBuildOutput.atPath('cdk.out/api-stack-dev.template.json'),
+      adminPermissions: true,
+      region: 'eu-central-1',
+    });
+
+    createAction.addToDeploymentRolePolicy(new iam.PolicyStatement({
+      actions: ['*'], // cloudformation:DescribeStacks, ssm:GetParameter
+      resources: ['*'],
+    }));
+
     pipeline.addStage({
       stageName: 'Dev',
       actions: [
-        new codepipeline_actions.CloudFormationCreateUpdateStackAction({
-          actionName: 'deployDev',
-          stackName: 'api-stack-dev',
-          templatePath: cdkBuildOutput.atPath('cdk.out/api-stack-dev.template.json'),
-          adminPermissions: true,
-          region: 'eu-central-1',
-        }),
+        createAction,
       ],
     });
 
