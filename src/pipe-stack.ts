@@ -32,7 +32,7 @@ export class PipeStack extends cdk.Stack {
             'commands': ['npm i npm@latest -g', 'npm install'],
           },
           build: {
-            commands: ['npm run build', 'npm run synth'],
+            commands: ['npm run build', 'npm run synth', 'npm run test'],
           },
         },
         artifacts: {

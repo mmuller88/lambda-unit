@@ -8,4 +8,4 @@
 
 # Misc
 
-yes | yarn cdkDestroy && yarn cdkDeploy --require-approval never
+yes | yarn cdkDestroy 'pipe-stack' && yarn cdkDeploy 'pipe-stack' --require-approval never
