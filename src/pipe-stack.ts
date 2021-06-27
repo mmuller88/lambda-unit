@@ -102,17 +102,17 @@ export class PipeStack extends cdk.Stack {
       region: 'eu-central-1',
     });
 
-    createAction.addToDeploymentRolePolicy(new iam.PolicyStatement({
-      actions: ['*'], // cloudformation:DescribeStacks, ssm:GetParameter
-      resources: ['*'],
-    }));
-
     pipeline.addStage({
       stageName: 'Dev',
       actions: [
         createAction,
       ],
     });
+
+    createAction.addToDeploymentRolePolicy(new iam.PolicyStatement({
+      actions: ['*'], // cloudformation:DescribeStacks, ssm:GetParameter
+      resources: ['*'],
+    }));
 
     // const oauth = cdk.SecretValue.secretsManager('alfcdk', {
     //   jsonField: 'muller88-github-token',
