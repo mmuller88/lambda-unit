@@ -91,7 +91,7 @@ export class PipeStack extends cdk.Stack {
         new codepipeline_actions.CloudFormationCreateUpdateStackAction({
           actionName: 'deployDev',
           stackName: 'api-stack-dev',
-          templatePath: cdkBuildOutput.atPath('cdk.out/api-stack.template.json'),
+          templatePath: cdkBuildOutput.atPath('cdk.out/api-stack-dev.template.json'),
           adminPermissions: true,
           region: 'eu-central-1',
         }),
