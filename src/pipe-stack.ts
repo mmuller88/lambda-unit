@@ -22,6 +22,8 @@ export class PipeStack extends cdk.Stack {
       }),
     });
 
+    new codebuild.ReportGroup(this, 'reportGroup', { reportGroupName: 'testReportGroup', removalPolicy: cdk.RemovalPolicy.DESTROY });
+
     const cdkBuild = new codebuild.PipelineProject(this, 'CdkBuild', {
       // encryptionKey: pipeline.artifactBucket.encryptionKey,
       buildSpec: codebuild.BuildSpec.fromObject({
@@ -33,6 +35,13 @@ export class PipeStack extends cdk.Stack {
           },
           build: {
             commands: ['npm run build', 'npm run synth', 'npm run test'],
+          },
+        },
+        reports: {
+          testReportGroup: {
+            'files': ['**/*'],
+            'base-directory': 'test-reports',
+            'discard-paths': 'no',
           },
         },
         artifacts: {
