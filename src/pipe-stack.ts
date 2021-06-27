@@ -10,8 +10,11 @@ import * as cdk from '@aws-cdk/core';
 // import { CdkpipelinesDemoStage } from './CdkpipelinesDemoStage';
 
 
+export interface PipeStackProps extends cdk.StackProps {
+  devStackName: string;
+}
 export class PipeStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props: cdk.StackProps = {}) {
+  constructor(scope: cdk.Construct, id: string, props: PipeStackProps) {
     super(scope, id, props);
 
 
@@ -97,7 +100,7 @@ export class PipeStack extends cdk.Stack {
     const createAction = new codepipeline_actions.CloudFormationCreateUpdateStackAction({
       actionName: 'deployDev',
       stackName: 'api-stack-dev',
-      templatePath: cdkBuildOutput.atPath('cdk.out/api-stack-dev.template.json'),
+      templatePath: cdkBuildOutput.atPath(`cdk.out/${props.devStackName}.template.json`),
       adminPermissions: true,
       region: 'eu-central-1',
     });

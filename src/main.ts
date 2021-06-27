@@ -10,8 +10,9 @@ const devEnv = {
   region: 'eu-central-1',
 };
 
-new PipeStack(app, 'pipe-stack', { env: devEnv });
-new ApiStack(app, 'api-stack-2-dev', { env: devEnv });
+const apiStackName = 'api-stack-2-dev';
+new ApiStack(app, apiStackName, { env: devEnv });
+new PipeStack(app, 'pipe-stack', { env: devEnv, devStackName: apiStackName });
 // new MyStack(app, 'my-stack-prod', { env: prodEnv });
 
 app.synth();
