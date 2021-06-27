@@ -1,5 +1,6 @@
 
 import * as cdk from '@aws-cdk/core';
+import { ApiStack } from './api-stack';
 import { PipeStack } from './pipe-stack';
 
 const app = new cdk.App();
@@ -10,7 +11,7 @@ const devEnv = {
 };
 
 new PipeStack(app, 'pipe-stack', { env: devEnv });
-// new ApiStack(app, 'api-stack-dev', { env: devEnv });
+new ApiStack(app, 'api-stack-dev', { env: devEnv });
 // new MyStack(app, 'my-stack-prod', { env: prodEnv });
 
 app.synth();
