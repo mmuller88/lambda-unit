@@ -89,6 +89,11 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-cdk/aws-codecommit",
+      "version": "1.110.0",
+      "type": "runtime"
+    },
+    {
       "name": "@aws-cdk/aws-codepipeline-actions",
       "version": "1.110.0",
       "type": "runtime"

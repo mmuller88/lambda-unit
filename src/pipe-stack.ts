@@ -5,6 +5,7 @@ import * as codepipeline from '@aws-cdk/aws-codepipeline';
 // import { CdkpipelinesDemoStage } from './CdkpipelinesDemoStage';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
 import * as iam from '@aws-cdk/aws-iam';
+import * as codecommit from '@aws-cdk/aws-codecommit';
 import * as s3 from '@aws-cdk/aws-s3';
 import * as cdk from '@aws-cdk/core';
 // import { CdkpipelinesDemoStage } from './CdkpipelinesDemoStage';
@@ -68,19 +69,26 @@ export class PipeStack extends cdk.Stack {
     //   resources: ['*'],
     // }));
 
+    const repo = codecommit.Repository.fromRepositoryName(this, 'Repo', 'lambda-unit');
+
     pipeline.addStage({
       stageName: 'Source',
       actions: [
-        new codepipeline_actions.GitHubSourceAction({
-          owner: 'mmuller88',
-          repo: 'lambda-unit',
-          branch: 'main',
+        // new codepipeline_actions.GitHubSourceAction({
+        //   owner: 'mmuller88',
+        //   repo: 'lambda-unit',
+        //   branch: 'main',
+        //   output: sourceOutput,
+        //   actionName: 'GitHubSource',
+        //   oauthToken: cdk.SecretValue.secretsManager('alfcdk', {
+        //     jsonField: 'muller88-github-token',
+        //   }),
+        //   trigger: codepipeline_actions.GitHubTrigger.WEBHOOK,
+        // }),
+        new codepipeline_actions.CodeCommitSourceAction({
+          actionName: 'CodeCommit',
+          repository: repo,
           output: sourceOutput,
-          actionName: 'GitHubSource',
-          oauthToken: cdk.SecretValue.secretsManager('alfcdk', {
-            jsonField: 'muller88-github-token',
-          }),
-          trigger: codepipeline_actions.GitHubTrigger.WEBHOOK,
         }),
       ],
     });

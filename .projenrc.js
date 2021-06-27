@@ -19,6 +19,7 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/pipelines',
     '@aws-cdk/aws-codepipeline',
     '@aws-cdk/aws-codebuild',
+    '@aws-cdk/aws-codecommit',
     '@aws-cdk/aws-codepipeline-actions',
   ],
   context: {
