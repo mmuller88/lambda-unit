@@ -15,7 +15,7 @@ export class ApiStack extends cdk.Stack {
         name: 'itemId',
         type: ddb.AttributeType.STRING,
       },
-      tableName: 'items',
+      tableName: 'itemss',
 
       // The default removal policy is RETAIN, which means that cdk destroy will not attempt to delete
       // the new table, and it will remain in your account until manually deleted. By setting the policy to
